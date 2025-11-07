@@ -1,5 +1,4 @@
 import express from "express";
-import {nanoid} from "nanoid"
 import dotenv from "dotenv"
 import connectDB from "./src/config/monogo.config.js"
 import short_url from "./src/routes/short_url.route.js"
@@ -27,8 +26,9 @@ app.get("/api/helloworld",(req,res)=>{
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
-
 app.use(attachUser)
+
+await connectDB()
 
 app.use("/api/user",user_routes)
 app.use("/api/auth",auth_routes)
@@ -38,6 +38,5 @@ app.get("/:id",redirectFromShortUrl)
 app.use(errorHandler)
 
 app.listen(process.env.PORT,()=>{
-    connectDB()
     console.log(`Server is running on http://localhost:${process.env.PORT}`);
 })
