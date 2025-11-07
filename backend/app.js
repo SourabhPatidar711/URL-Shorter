@@ -20,6 +20,25 @@ app.use(cors({
     credentials: true 
 }));
 
+let isConnected = false;
+async function connectedtoMongoDB(){
+    try {
+        await mongoose.connect(process.env.MONGO_URI,{
+            useNewURLParser:true,
+            useUnifiedTopology: true
+        })
+        isConnected = true;
+        console.log("Connected to MongoDB");
+    } catch (error) {
+        console.error("Error connecting to MongoDB")
+    }
+}
+app.use((req,res,next)=>{
+    if(!isConnected){
+        connectedtoMongoDB()
+    }
+    next()
+})
 
 
 app.use(express.json())
