@@ -5,8 +5,8 @@ import {login} from "../store/slice/authSlice.js"
 import {useNavigate} from "@tanstack/react-router"
 
 export default function LoginForm({ onToggle }) {
-  const [email, setEmail] = useState("one@gmail.com");
-  const [password, setPassword] = useState("12345678");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const auth = useSelector((state) => state.auth)
