@@ -20,6 +20,8 @@ app.use(cors({
     credentials: true 
 }));
 
+
+
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
@@ -33,7 +35,9 @@ app.get("/:id",redirectFromShortUrl)
 
 app.use(errorHandler)
 
-app.listen(process.env.PORT,()=>{
-    connectDB()
-    console.log(`Server is running on http://localhost:${process.env.PORT}`);
-})
+// app.listen(process.env.PORT,()=>{
+//     connectDB()
+//     console.log(`Server is running on http://localhost:${process.env.PORT}`);
+// })
+
+module.exports = app
