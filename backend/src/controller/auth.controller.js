@@ -7,7 +7,11 @@ export const register_user = wrapAsync( async (req, res) => {
     const {name, email, password} = req.body
     const {token,user} = await registerUser(name, email, password)
     req.user = user
-    res.cookie("accessToken", token, cookieOptions)
+    res.cookie("accessToken", token, {
+        httpOnly: true,     
+        secure: true,     
+        sameSite: "None",
+    });
     res.status(200).json({message:"register success"})
 })
 
