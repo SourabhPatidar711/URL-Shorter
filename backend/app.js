@@ -15,10 +15,7 @@ dotenv.config("./.env")
 const app = express();
 
 app.use(cors({
-    origin: [
-        "https://url-shorter-jalo.vercel.app/",
-        "http://localhost:5173",
-    ],
+    origin: "https://url-shorter-jalo.vercel.app/",
     credentials: true 
 }));
 
