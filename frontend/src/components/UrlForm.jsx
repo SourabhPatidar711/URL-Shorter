@@ -84,7 +84,7 @@ const UrlForm = () => {
                 type="text"
                 readOnly
                 value={shortUrl.shortUrl}
-                className="flex-1 p-2 border border-gray-300 rounded-l-md bg-gray-50"
+                className="flex-1 p-2 border text-black border-gray-300 rounded-l-md bg-gray-50"
               />
                <button
                 onClick={handleCopy}
